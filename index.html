@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        .slider {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .blog-content {
+            display: none; /* Initially hidden */
+            max-width: 800px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Link to Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Candal&display=swap" rel="stylesheet">
+
+
+    <!-- Custom Styling -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Blog</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1 class="logo-text"><span>Lapclives</span>LAPC</h1>
+        </div>
+        <i class="fas fa-bars menu-toggle"></i>
+        <ul class="nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">More <i class="fa fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">Login</a>
+                    <a href="#">Signin</a>
+                    <a href="#">Contact</a>
+                </div>
+            </li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#" class="blog">Blog</a></li>
+            <li><a href="#" class="member">Member</a></li>
+        </ul>
+    </header>
+
+    <main>
+        
+         <!-- Post Slider -->
+    <div class="slider-post">
+        <h1 class="slider-title">LAPC's blogs</h1>
+        <div class="post-wrapper" id="post-wrapper">
+            <div class="post" data-id="1">
+                <img src="1.JPG" alt="Post 1">
+                <div class="post-title">Post 1</div>
+            </div>
+            <div class="post" data-id="2">
+                <img src="2.JPG" alt="Post 2">
+                <div class="post-title">Post 2</div>
+            </div>
+            <div class="post" data-id="3">
+                <img src="3.JPG" alt="Post 3">
+                <div class="post-title">Post 3</div>
+            </div>
+            <div class="post" data-id="4">
+                <img src="4.JPG" alt="Post 4">
+                <div class="post-title">Post 4</div>
+            </div>
+            <div class="post" data-id="5">
+                <img src="12.JPG" alt="Post 5">
+                <div class="post-title">Post 5</div>
+            </div>
+            <div class="post" data-id="6">
+                <img src="7.JPG" alt="Post 6">
+                <div class="post-title">Post 6</div>
+            </div>
+            <div class="post" data-id="7">
+                <img src="11.JPG" alt="Post 7">
+                <div class="post-title">Post 7</div>
+            </div>
+            <div class="post" data-id="8">
+                <img src="6.webp" alt="Post 8">
+                <div class="post-title">Post 8</div>
+            </div>
+            <div class="post" data-id="9">
+                <img src="7.JPG" alt="Post 9">
+                <div class="post-title">Post 9</div>
+            </div>
+            <div class="post" data-id="10">
+                <img src="8.JPG" alt="Post 10">
+                <div class="post-title">Post 10</div>
+            </div>
+            <div class="post" data-id="11">
+                <img src="9.JPG" alt="Post 11">
+                <div class="post-title">Post 11</div>
+            </div>
+        </div>
+    </div>
+        
+    <!-- Blog Content Area -->
+    <div id="blog-content" class="blog-content">
+        <h2 id="blog-title"></h2>
+        <p id="blog-text"></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const postWrapper = document.getElementById('post-wrapper');
+            const blogContent = document.getElementById('blog-content');
+            const blogTitle = document.getElementById('blog-title');
+            const blogText = document.getElementById('blog-text');
+
+            // Mock data for blog posts
+            const posts = {
+                1: {
+                    title: 'Is it fate?? if not, it\'s KARMA',
+                    text: `One night in 2004—a woman dreamt of a soul trying to hug her in the dream—it was vague to know who was hugging her as it was a dream. But when she woke up, she found that it was her grandmother who died when she was a teenager. A month later, she started to vomit every early morning and suspiciously, she tested a pregnancy test and it showed that she was pregnant. Could it be a coincidence??  or Could it be a connection?? A woman is a Buddhist and her family including her older sister, also believe in the existence of the next life and reincarnation or rebirth. According to Buddhism, the cycle of rebirth is called samsara and it is an ongoing cycle of life, death, and rebirth humans and creatures have lives to live and suffer unless they obtain enlightenment and nirvana(nothingness). There are some beliefs and concepts that the soul cannot be free from the circle of life as long as it desires, so a soul comes back in a different character in the next life, to take what it wanted in the previous life.
+                    
+                    A woman who had a dream was my mother and a baby was me. Theoretically, I am the grandmother of my mother. My aunt–the daughter of my great-grandmother –said I was sick and hospitalized at three months old and even I was close to death. The doctor said it was dengue fever but my aunt said it wasn’t and it was from the past soul’s expression to take what it wanted from past life and my aunt knew that it was a golden necklace–my grandmother’s favorite. Strangely, the fever was cured after the day that my aunt left the necklace in my bed when I was sleeping in the hospital room. From that day on, my aunt started to call me “Mama” which means mother. My aunt used to tell me a memory of my childhood when she asked me “ Are you Daw Mal Kha?”, my great-grandmother, and then I smiled and nodded. Yet, I do not remember anything from my childhood or past life only if my aunt didn’t tell me about that story.
+                    
+                    I did not thoroughly believe in the myths and the stories that I had been told until I saw the actor Keanu Reeves’s movie called “Little Buddha” perhaps 7 years ago. In one plot in that movie, Lama Norbu explains how the mind can go to different bodies, explaining reincarnation. A cup of tea dropped to the floor and all shatters–the things move from one container to the next, but it is still the tea –in the same way the mind after death moves from one body to another but it is still the mind. After watching that movie, I really really had faith in reincarnation.
+                    
+                    All my life my mother never told me about my sickness and I nodded every time they asked whether I was her or not perhaps she wanted me to stay free from the attachment to my past life. Sadly, my mother and I lost the connection between us since I no longer wanted to be breastfed. Since then, I slept in the same bed with my aunt. To be honest– I have never had any idea why I am closer to my aunt than my mother and my aunt never calls my name– she calls me Mama. But my aunt used to say that my great-grandmother was never lazy to work and never slept till the afternoon as a judgemental perspective for me.
+                    
+                    My 79-year-old aunt is a spinster with no children, but she is very patient with me. She is also a great chef, cooking my favorite meal– fried rice with soy sauce. Sometimes, she is like my best best friend, and she secretly gives me pocket money. Other times, she is cute and naughty, gossiping a lot about the neighborhood. She can also be childish and difficult to understand.
+                    
+                    However, there is one thing I feel very sorry about - she never had the chance to learn English and doesn't even know the alphabet. On one holiday, our family was watching the TV together and she suddenly told me to grab the TV remote control and everyone laughed at her as she mispronounced the remote as “lamote kondol” but her face was like she had no clue why she was being laughed. But I could protect her as soon as they laughed like “There is nothing to laugh out loud and you guys are not that good at English” and the group went silent after all. But I knew that she was a bit disappointed and embarrassed because of them and I am still sorry and sad every time I think about it because my family should not have laughed at their family member but rather they should have supported or corrected her. She has an inquisitive mind and she wants to learn and see everything in the world that she has never known and seen. My biggest surprise is that she traveled alone to India with the tour group without any English speaking skills and I was worrying for her during her trip but a week later she came back with the Indian steel tongue as a gift for me from the trip and since then I knew we can never mess up with her confidence.
+                    
+                    She is accustomed to watching English TV series at night and she really enjoys watching the series with English subtitles because she feels like she can comprehend all the details of the show. However, I have to translate and explain the dialogue to her while she's watching, and it's sort of pride for me to do that, even though it can be a bit tiring at times.
+                    
+                    One night, as we were watching a movie together, we had placed a plate of durian fruit on the table in front of us. Durian is an expensive but quite delicious fruit. Suddenly, our dog, Oggy, caught the scent of the durian and silently approached the table. Without warning, Oggy pulled the plate down and quickly ran away, biting into the expensive fruit.
+                    It was a comical moment, where we had to watch someone (our dog) enjoy an expensive delicacy with such gusto and delight. The unexpected incident provided an amusing and memorable experience during our movie-watching evening. From that moment on, we never put the food on the table where our dog can reach it. 
+                    
+                    Day by day, she is getting older and so am I. Practically, she is getting closer to death, and yet I am not ready for it because she is my favorite person on earth–with that thought, I can’t leave her behind to search for more opportunities.`
+                },
+                // Add more posts here if needed
+            };
+
+            // Handle post click events
+            postWrapper.addEventListener('click', function(e) {
+                const post = e.target.closest('.post');
+                if (post) {
+                    const postId = post.getAttribute('data-id');
+                    const postData = posts[postId];
+                    if (postData) {
+                        blogTitle.textContent = postData.title;
+                        blogText.textContent = postData.text;
+                        blogContent.style.display = 'block';
+                        document.getElementById('blog-content').scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+
+            // Mouse events for desktop
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            postWrapper.addEventListener('mousedown', (e) => {
+                isDown = true;
+                postWrapper.classList.add('active');
+                startX = e.pageX - postWrapper.offsetLeft;
+                scrollLeft = postWrapper.scrollLeft;
+            });
+
+            postWrapper.addEventListener('mouseleave', () => {
+                isDown = false;
+                postWrapper.classList.remove('active');
+            });
+
+            postWrapper.addEventListener('mouseup', () => {
+                isDown = false;
+                postWrapper.classList.remove('active');
+            });
+
+            postWrapper.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - postWrapper.offsetLeft;
+                const walk = (x - startX) * 2; // Control scroll speed
+                postWrapper.scrollLeft = scrollLeft - walk;
+            });
+
+            // Touch events for mobile
+            postWrapper.addEventListener('touchstart', (e) => {
+                isDown = true;
+                startX = e.touches[0].pageX - postWrapper.offsetLeft;
+                scrollLeft = postWrapper.scrollLeft;
+            });
+
+            postWrapper.addEventListener('touchend', () => {
+                isDown = false;
+            });
+
+            postWrapper.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                const x = e.touches[0].pageX - postWrapper.offsetLeft;
+                const walk = (x - startX) * 2; // Control scroll speed
+                postWrapper.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
+
+</body>
+</html>
